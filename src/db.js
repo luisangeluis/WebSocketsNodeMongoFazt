@@ -8,6 +8,7 @@ export const connectMongoDb = async () => {
     await connect(MONGODB_URI);
     console.log("connected db");
   } catch (error) {
+    console.log("error en bd");
     console.log(error);
   }
 

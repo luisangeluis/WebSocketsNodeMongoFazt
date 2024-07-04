@@ -5,9 +5,13 @@ export default (io) => {
     console.log("New user conected");
 
     async function emitNotes() {
-      const notes = await Note.find();
+      try{
+        const notes = await Note.find();
+        io.emit("server:loadnotes", notes)
 
-      io.emit("server:loadnotes", notes)
+      }catch(error){
+        console.log(error.message);
+      }
     }
 
     emitNotes();

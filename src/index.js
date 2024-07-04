@@ -4,13 +4,14 @@ import http from "http";
 import sockets from "./sockets.server";
 
 import { connectMongoDb } from "./db";
+import { PORT } from "./config";
 
 connectMongoDb();
 
 const server = http.createServer(app);
-const httpServer = server.listen(3000);
+const httpServer = server.listen(PORT);
 
-console.log(`Server on port 3000`);
+console.log(`Server on port ${PORT}}`);
 
 const io = new WebsocketServer(httpServer);
 
